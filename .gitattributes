@@ -1,0 +1,12 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.bat text eol=crlf
+*.command text eol=lf
+*.png binary
+*.ico binary
+*.docx binary
+*.pptx binary
+*.exe binary

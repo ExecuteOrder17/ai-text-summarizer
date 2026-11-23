@@ -1,0 +1,27 @@
+This application includes Windows components from:
+
+Python 3.13.13 (Python Software Foundation)
+https://www.python.org/
+License text: runtime/LICENSE.txt
+Source: https://www.python.org/ftp/python/3.13.13/Python-3.13.13.tar.xz
+
+PySide6-Essentials 6.10.1 and shiboken6 6.10.1 (The Qt Company)
+https://www.qt.io/qt-for-python
+Their distribution metadata and applicable libraries are retained in
+runtime/Lib/site-packages. Unused Qt modules and development tools have
+been omitted. The included vendor binaries are unmodified.
+LGPLv3, GPLv2 and GPLv3 license texts are also in the licenses directory.
+PySide source: https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.10.1-src/
+Qt source: https://download.qt.io/official_releases/qt/6.10/6.10.1/single/
+
+Qt and PySide6 components are dynamically loaded from the installed runtime
+directory. Applicable license terms are included in the distributions.
+You may replace compatible runtime libraries and debug such replacements
+as allowed by their applicable licenses.
+
+NSIS 3.11 is used for the installer and desktop launcher.
+https://nsis.sourceforge.io/
+Its license permits distribution of compiled installers.
+
+Project assets were edited from the user's supplied references with an
+image-generation tool. The report and slides are the original project files.

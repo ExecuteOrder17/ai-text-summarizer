@@ -1,0 +1,1 @@
+Offline Python desktop text summarizer with a polished interface, guided project demo, simple source code, and a Windows installer.
