@@ -11,6 +11,7 @@ permissions:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
@@ -21,7 +22,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Install Qt system libraries on Linux
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0
       - name: Install interface dependency
         run: python -m pip install -r requirements.txt
       - name: Run algorithm and desktop workflow checks
         run: python -m unittest discover -s tests -v
+      - name: Check the bundled Windows installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          QT_QPA_PLATFORM: windows
+        run: |
+          $setup = Start-Process -FilePath (Resolve-Path 'downloads/AI_Text_Summarizer_Setup.exe') -ArgumentList '/S' -Wait -PassThru
+          if ($setup.ExitCode -ne 0) { throw "Installer exited with $($setup.ExitCode)" }
+          $installed = Join-Path $env:LOCALAPPDATA 'Programs\AITextSummarizer'
+          $shortcut = Join-Path ([Environment]::GetFolderPath('Desktop')) 'AI Text Summarizer.lnk'
+          if (!(Test-Path $shortcut)) { throw 'Desktop shortcut was not created' }
+          & "$installed\runtime\python.exe" tests/windows_installer_smoke.py $installed
+          if ($LASTEXITCODE -ne 0) { throw 'Installed application smoke check failed' }

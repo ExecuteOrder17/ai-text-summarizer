@@ -10,7 +10,9 @@ A Python desktop project that turns a paragraph into a shorter extract by keepin
 
 ## Download and run the Windows app
 
-[**Download AI_Text_Summarizer_Setup.exe**](downloads/AI_Text_Summarizer_Setup.exe?raw=true)
+[**Download AI_Text_Summarizer_Setup.exe**](https://github.com/ExecuteOrder17/ai-text-summarizer/releases/latest/download/AI_Text_Summarizer_Setup.exe)
+
+You can also find the installer in the repository's [downloads folder](downloads).
 
 1. Download the setup file using the link above.
 2. Double-click **AI_Text_Summarizer_Setup.exe**.
@@ -193,7 +195,7 @@ For a headless environment, set `QT_QPA_PLATFORM=offscreen` before running the t
 
 The existing **11 automated checks** passed in Linux offscreen mode. They cover blank input, short text, sentence selection, punctuation, Unicode, copying, saving, importing, errors, the guided demo, and navigation/layout behaviour. The interface was inspected at different window sizes. The Windows setup package was compiled, extracted, and checked for its required runtime files. A full launch of the installed app on a real Windows computer has not been verified in the build environment.
 
-The repository also includes a GitHub Actions workflow to run the source checks. Its GitHub status should be checked after the first push; the presence of a workflow file does not mean a remote run has already passed.
+The GitHub Actions workflow runs the source checks on Linux and Windows. The Windows job also installs the supplied setup file, checks the desktop shortcut, and opens the bundled interface with the sample paragraph. See the repository's Actions tab for the latest result. These automated checks do not replace trying the complete installed app manually on your own computer.
 
 ## Build an executable yourself
 
